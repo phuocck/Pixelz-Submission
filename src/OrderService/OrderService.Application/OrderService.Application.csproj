@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Queries\" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OrderSerivce.Domain\OrderSerivce.Domain.csproj" />
+    <ProjectReference Include="..\OrderService.Domain\OrderService.Domain.csproj" />
     <ProjectReference Include="..\OrderService.Persistence\OrderService.Persistence.csproj" />
     <ProjectReference Include="..\OrderSevice.Infrastructure\OrderSevice.Infrastructure.csproj" />
   </ItemGroup>
