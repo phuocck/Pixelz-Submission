@@ -1,13 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-using OrderSerivce.Domain;
-using OrderSerivce.Domain.Events;
 using OrderService.Domain;
+using OrderService.Domain.Events;
 using OrderService.Persistence.DbContexts;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OrderService.Persistence.Repositories
 {
@@ -61,7 +55,26 @@ namespace OrderService.Persistence.Repositories
 
         public async Task<IEnumerable<OrderEntity>> QueryAsync(string name, int page, int pageSize)
         {
-            return _orders.AsQueryable().Where(x => x.Name.Contains(name, StringComparison.CurrentCultureIgnoreCase)).Take(pageSize).Skip(page * pageSize);
+            var query = _orders.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(name))
+            {
+                query = query.Where(o => o.Name.Contains(name, StringComparison.OrdinalIgnoreCase));
+            }
+
+            var total = query.Count();
+
+            var paged = query
+                .OrderByDescending(o => o.CreatedAt)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+            return paged;
+        }
+
+        public async Task<IEnumerable<OrderEntity>> GetOrdersStuckAsync()
+        {
+            return _orders.AsQueryable().Where(x => x.Status != OrderStatus.Completed);
         }
     }
 }

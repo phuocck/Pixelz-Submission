@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-using OrderSerivce.Domain;
-using OrderService.Application.Dtos.Checkout;
+﻿using OrderService.Application.Dtos.Checkout;
 using OrderService.Application.Exceptions;
 using OrderService.Domain;
 using OrderSevice.Infrastructure;

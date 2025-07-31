@@ -19,6 +19,8 @@ namespace OrderService.Controllers
             _orderQueryService = orderQueryService;
         }
 
+        //TODO => add rate limit for user ip
+        //[RateLimitPolicy("CheckoutPolicy")]
         [HttpPost("checkout")]
         public async Task<IActionResult> CheckoutAsync([FromBody]CheckoutDtoCommand checkoutDtoCommand)
         {

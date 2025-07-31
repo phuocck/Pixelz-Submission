@@ -1,10 +1,5 @@
-﻿using OrderSerivce.Domain;
-using OrderService.Application.Queries.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OrderService.Application.Queries.Dtos;
+using OrderService.Domain;
 
 namespace OrderService.Application.Queries
 {

@@ -1,4 +1,4 @@
-﻿using OrderSerivce.Domain;
+﻿using OrderService.Domain;
 using OrderService.Api.ExceptionFilter;
 using OrderService.Application.Commands;
 using OrderService.Application.Dtos.Checkout;

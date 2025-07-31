@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderSerivce.Domain.Events
+namespace OrderService.Domain.Events
 {
     public abstract class OrderEvent
     {

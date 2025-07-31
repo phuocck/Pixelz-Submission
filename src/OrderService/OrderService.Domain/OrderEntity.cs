@@ -1,4 +1,4 @@
-﻿using OrderSerivce.Domain.Events;
+﻿using OrderService.Domain.Events;
 
 namespace OrderService.Domain
 {
