@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderSevice.Infrastructure.Mocks
+namespace OrderService.Infrastructure.Mocks
 {
-    public interface IProductionClient
+    public interface IEmailService
     {
-        Task<bool> PushAsync(Guid orderId);
+        Task SendEmailAsync(Guid orderId,string email);
     }
 }

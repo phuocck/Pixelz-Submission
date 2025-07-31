@@ -5,7 +5,7 @@ using OrderService.Application.Dtos.Checkout;
 using OrderService.Application.Queries;
 using OrderService.Persistence.DbContexts;
 using OrderService.Persistence.Repositories;
-using OrderSevice.Infrastructure.Mocks;
+using OrderService.Infrastructure.Mocks;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

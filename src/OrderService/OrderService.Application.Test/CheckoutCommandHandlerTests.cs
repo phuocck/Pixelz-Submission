@@ -6,7 +6,7 @@ using OrderService.Application.Exceptions;
 using OrderService.Application.Test.TestHelpers;
 using OrderService.Domain;
 using OrderService.Domain.Events;
-using OrderSevice.Infrastructure.Mocks;
+using OrderService.Infrastructure.Mocks;
 
 namespace OrderService.Application.Test
 {

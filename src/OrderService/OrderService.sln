@@ -5,8 +5,6 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Application", "OrderService.Application\OrderService.Application.csproj", "{69C3F90A-5598-4181-9817-71D261091FB4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderSevice.Infrastructure", "OrderSevice.Infrastructure\OrderSevice.Infrastructure.csproj", "{E1717DC0-B9B7-48CA-B779-A6B7AC16E63B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Persistence", "OrderService.Persistence\OrderService.Persistence.csproj", "{76C24654-1B02-45B9-B2E2-E0ABFF6EDABC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Api", "OrderService.Api\OrderService.Api.csproj", "{F24F4927-CA26-45D9-8D55-1A57B691E2FC}"
@@ -14,6 +12,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Application.Test", "OrderService.Application.Test\OrderService.Application.Test.csproj", "{52AD2449-C07E-40CC-94C5-B5A2C12AB94C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Domain", "OrderService.Domain\OrderService.Domain.csproj", "{B77D30C5-DF49-4F7A-9626-6EBBA2B2BA83}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrderService.Infrastructure", "OrderService.Infrastructure\OrderService.Infrastructure.csproj", "{70B20ADD-8E74-477C-8CFC-E8873E6D6DB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +25,6 @@ Global
 		{69C3F90A-5598-4181-9817-71D261091FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69C3F90A-5598-4181-9817-71D261091FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69C3F90A-5598-4181-9817-71D261091FB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E1717DC0-B9B7-48CA-B779-A6B7AC16E63B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E1717DC0-B9B7-48CA-B779-A6B7AC16E63B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E1717DC0-B9B7-48CA-B779-A6B7AC16E63B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E1717DC0-B9B7-48CA-B779-A6B7AC16E63B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{76C24654-1B02-45B9-B2E2-E0ABFF6EDABC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{76C24654-1B02-45B9-B2E2-E0ABFF6EDABC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76C24654-1B02-45B9-B2E2-E0ABFF6EDABC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,6 +41,10 @@ Global
 		{B77D30C5-DF49-4F7A-9626-6EBBA2B2BA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B77D30C5-DF49-4F7A-9626-6EBBA2B2BA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B77D30C5-DF49-4F7A-9626-6EBBA2B2BA83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70B20ADD-8E74-477C-8CFC-E8873E6D6DB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70B20ADD-8E74-477C-8CFC-E8873E6D6DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70B20ADD-8E74-477C-8CFC-E8873E6D6DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70B20ADD-8E74-477C-8CFC-E8873E6D6DB3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
