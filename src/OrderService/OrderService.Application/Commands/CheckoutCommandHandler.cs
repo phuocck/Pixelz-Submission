@@ -1,8 +1,8 @@
 ﻿using OrderService.Application.Dtos.Checkout;
 using OrderService.Application.Exceptions;
 using OrderService.Domain;
-using OrderSevice.Infrastructure;
-using OrderSevice.Infrastructure.Mocks;
+using OrderService.Infrastructure;
+using OrderService.Infrastructure.Mocks;
 using System.Diagnostics;
 
 namespace OrderService.Application.Commands

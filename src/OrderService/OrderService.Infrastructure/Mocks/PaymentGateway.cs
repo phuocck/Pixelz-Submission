@@ -5,18 +5,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderSevice.Infrastructure.Mocks
+namespace OrderService.Infrastructure.Mocks
 {
-    public class InvoiceService : IInvoiceService
+    public class PaymentGateway : IPaymentGateway
     {
         private readonly ILogger _logger;
-        public InvoiceService(ILogger<InvoiceService> logger)
+        public PaymentGateway(ILogger<PaymentGateway> logger)
         {
             _logger = logger;
         }
-        public Task<bool> CreateInvoiceAsync(Guid orderId, decimal totalAmount)
+        public Task<bool> ChargeAsync(Guid orderId, decimal amount)
         {
-            _logger.LogInformation($"Created Invoice for order {orderId}");
+            _logger.LogInformation($"Charge Success order {orderId} total {amount}$");
             return Task.FromResult(true);
         }
     }

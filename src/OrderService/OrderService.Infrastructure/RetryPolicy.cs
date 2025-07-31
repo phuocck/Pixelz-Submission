@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OrderSevice.Infrastructure
+namespace OrderService.Infrastructure
 {
     public static class RetryPolicy
     {
