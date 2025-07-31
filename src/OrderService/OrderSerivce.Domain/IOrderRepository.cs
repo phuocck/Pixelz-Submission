@@ -12,9 +12,11 @@ namespace OrderSerivce.Domain
     {
         Task<OrderEntity> GetByIdAsync(Guid id);
 
-        Task<bool> SaveChangeAsync();
+        Task<bool> SaveChangesAsync();
 
 
         void AddOutboxEvent(IReadOnlyCollection<OrderEvent> orderEvent);
+
+        Task<IEnumerable<OrderEntity>>QueryAsync(string name, int page, int pageSize);
     }
 }

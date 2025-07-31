@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace OrderService.Application.Commands
 {
-    public interface IOrderCommand<TIn,TOut>
+    public interface IOrderCommand<TCommand,TOut>
     {
-        Task<TOut> ExecuteAsync(TIn command);
+        Task<TOut> ExecuteAsync(TCommand command);
     }
 }

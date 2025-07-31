@@ -1,4 +1,5 @@
-﻿using OrderSerivce.Domain;
+﻿using Microsoft.Extensions.Logging;
+using OrderSerivce.Domain;
 using OrderService.Application.Dtos.Checkout;
 using OrderService.Application.Exceptions;
 using OrderService.Domain;
@@ -55,14 +56,16 @@ namespace OrderService.Application.Commands
                 if (!paymentResult)
                 {
                     order.MarkPaymentFailed();
-                    await _orderRepository.SaveChangeAsync();
+                    await _orderRepository.SaveChangesAsync();
                     throw new PaymentFailedException("Payment was declined by provider");
                 }
             }
 
             order.MarkPaid();
+
+            //TODO => commit order and commit outbox with the same transaction
             _orderRepository.AddOutboxEvent(order.Events);
-            await _orderRepository.SaveChangeAsync();
+            await _orderRepository.SaveChangesAsync();
 
             await ExecutePostPaymentStepsWithRetry(order);
 
@@ -77,7 +80,7 @@ namespace OrderService.Application.Commands
         private async Task ExecutePostPaymentStepsWithRetry(OrderEntity order)
         {
             order.MarkProcessing();
-            await _orderRepository.SaveChangeAsync();
+            await _orderRepository.SaveChangesAsync();
 
             using var activity = ActivitySource.StartActivity("PostPaymentFlow");
 
@@ -115,11 +118,11 @@ namespace OrderService.Application.Commands
                 activity?.AddEvent(new ActivityEvent("Post-processing failed"));
             }
 
-            await _orderRepository.SaveChangeAsync();
+            await _orderRepository.SaveChangesAsync();
         }
 
         private string GetUserEmail() => "user-mock@gmail.com";
 
-        private Guid GetUserId() => Guid.NewGuid();
+        private Guid GetUserId() => Guid.Parse("0d567094-fe45-4d89-a338-5ca07e68a340");
     }
 }

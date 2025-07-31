@@ -1,7 +1,4 @@
-﻿using OrderSerivce.Domain;
-using OrderSerivce.Domain.Events;
-using System;
-using System.Collections.Generic;
+﻿using OrderSerivce.Domain.Events;
 
 namespace OrderService.Domain
 {
@@ -29,6 +26,8 @@ namespace OrderService.Domain
             Status = OrderStatus.Created;
             TotalAmount = totalAmount;
             CreatedAt = DateTime.UtcNow;
+            //TODO => fix user
+            UserId = Guid.Parse("0d567094-fe45-4d89-a338-5ca07e68a340");
         }
 
         public void MarkPaymentPending()
