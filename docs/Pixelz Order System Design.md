@@ -16,15 +16,27 @@ This submission focuses on a critical flow: completing an order checkout and tri
 
 #### *2.1 Functional*
 
-* Search orders by name
+* **Order Search**
 
-* Checkout flow:
+  * Users must be able to **search for existing orders by name**, using partial match queries
+
+* **Checkout flow:**
 
   * Trigger payment (mocked)
 
-    * On success: send email, create invoice, push to production
+  * On Payment success
 
-    * On Error: Return fail
+    * **Send a confirmation email** to the client. This is a **required business action**.
+
+    * **Generate an invoice** using the mocked Invoice System.
+
+    * **Push the order** to the internal Production System to initiate fulfillment.
+
+  * On Payment error
+
+    * The system must **not trigger any side-effects**.
+
+    * An appropriate failure response must be returned to the client.	
 
 #### *2.2 Non-functional*
 
@@ -129,13 +141,15 @@ While the MVP is functionally complete, it is limited in resilience and scalabil
 
 #### *5.3 Benefits*
 
-* Data consistent via local transaction, don’t lost any events, eventually consistent for side-effect operator 
+* **Data Consistency**: Events are written within the same local transaction to ensure consistency between business state and event emission. No events are lost.
 
-* Each handler is idempotent and scalable
+* **Eventually Consistent Side Effects**: All downstream operations (email, invoice, production, etc.) process events asynchronously and reach consistency over time.
 
-* Retry logic isolated per handler
+* **Scalable & Idempotent Handlers**: Each side-effect handler is independently scalable and designed to be safely re-executed without unintended consequences.
 
-* Easy to extend (add SMS handler, Slack integration, etc.)
+* **Isolated Retry Logic**: Failures in one handler do not affect others. Each component manages its own retries and error recovery.
+
+* **Extensibility**: New event consumers (e.g. SMS notification, Slack alerts, order cancellation handlers) can be added without modifying the core logic.
 
 #### *5.4 Error Handling*
 
@@ -145,7 +159,7 @@ While the MVP is functionally complete, it is limited in resilience and scalabil
 
 * Payment success but app crash, not update order status: cronjob running will relay order haven't been processed (status created). The order will be re-pay, but don't worry, we use order\_id for idempotent payment, it cannot charge again. 
 
-*  Payment success but side-effect service not working: The event paid is persistent, it will be processed when side-effect service running.
+*  Payment success but side-effect service not working such as EmailService cannot send mail for some reason,...: The event paid is persistent, and has status for each side-effect operator in ***OrderSideEffectStatus***,  it will be processed when the side-effect service is running. It means sending mail can re-process after that and ensure user receipt email at least one.
 
 #### *5.5 Comparison: Monolith vs Event-Driven*
 
@@ -259,7 +273,7 @@ src/
   ├── ProductionService/     \# Separate production domain (optional)
 
 
-* Interfaces isolate business logic from infrastructure
+* Interfaces isolate business logic from infrastructure with Clean Architect
 
 * CI/CD per module
 

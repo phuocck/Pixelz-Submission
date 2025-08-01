@@ -7,7 +7,7 @@ namespace OrderService.Application.Queries.Dtos
         public Guid Id { get; set; }
         public string Name { get; set; }
         public decimal TotalAmount { get; set; }
-        public OrderStatus Status { get; set; }
+        public string Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 
@@ -18,7 +18,7 @@ namespace OrderService.Application.Queries.Dtos
                 CreatedAt = orderEntity.CreatedAt,
                 Id = orderEntity.Id,
                 Name = orderEntity.Name,
-                Status = orderEntity.Status,
+                Status = orderEntity.Status.ToString(),
                 TotalAmount = orderEntity.TotalAmount,
                 UpdatedAt = orderEntity.UpdatedAt
             };

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,16 @@ namespace OrderService.Infrastructure.Mocks
 {
     public class EmailService : IEmailService
     {
+        private readonly ILogger _logger;
+        public EmailService(ILogger<EmailService> logger)
+        {
+            _logger = logger;
+        }
+
         public Task SendEmailAsync(Guid orderId, string email)
         {
-            throw new NotImplementedException();
+            _logger.LogInformation($"Send email to {email} successfully");
+            return Task.CompletedTask;
         }
     }
 }

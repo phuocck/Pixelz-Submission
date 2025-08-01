@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace OrderService.Infrastructure
 {
+
+    /// <summary>
+    /// Mocking retry
+    /// </summary>
     public static class RetryPolicy
     {
         public static async Task RetryAsync(

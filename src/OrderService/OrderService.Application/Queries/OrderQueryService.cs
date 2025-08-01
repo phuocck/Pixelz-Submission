@@ -20,15 +20,7 @@ namespace OrderService.Application.Queries
         public async Task<OrderQueryDtoResult> QueryAsync(OrderQueryByNameDto orderQueryByNameDtocs)
         {
             var entites = await _orderRepository.QueryAsync(orderQueryByNameDtocs.Name, orderQueryByNameDtocs.Page, orderQueryByNameDtocs.PageSize);
-            var items = entites.Select(e => new OrderDto
-            {
-                CreatedAt = e.CreatedAt,
-                Id = e.Id,
-                Name = e.Name,
-                Status = e.Status,
-                TotalAmount = e.TotalAmount,
-                UpdatedAt = e.UpdatedAt
-            });
+            var items = entites.Select(e => OrderDto.ToDto(e));
             return new OrderQueryDtoResult(items, orderQueryByNameDtocs.Page, orderQueryByNameDtocs.PageSize);
         }
     }
